@@ -160,6 +160,43 @@ git push -u origin feat/<short-description>
 
 4. Open a Pull Request to `main`, wait for CI checks, get review, then squash-merge.
 
+## Common Branch Commands (Minimal)
+
+```bash
+# list branches
+git branch -a
+
+# switch to an existing branch
+git switch <branch-name>
+
+# create and switch to a new branch
+git switch -c feat/<short-description>
+
+# delete a local branch (safe, only if merged)
+git branch -d <branch-name>
+
+# force delete a local branch (if not merged)
+git branch -D <branch-name>
+
+# delete a remote branch
+git push origin --delete <branch-name>
+```
+
+## Quick Fix: "src refspec ... does not match any"
+
+If you tried to push a branch name that does not exist locally:
+
+```bash
+git switch -c feat/update-eslint-config
+git push -u origin feat/update-eslint-config
+```
+
+If you are already on `main` and want to push `main`:
+
+```bash
+git push origin main
+```
+
 ## How Changes Go From Local to GitHub Pages
 
 1. You make changes locally on a feature branch.
