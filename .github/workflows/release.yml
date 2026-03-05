@@ -37,6 +37,7 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Assumes build artifacts are emitted into `dist` (Vite default).
       - name: Archive build output
         run: tar -czf dist-${{ github.ref_name }}.tar.gz dist
 

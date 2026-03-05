@@ -37,6 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Vite-specific Pages base path for project sites: /<repo-name>/.
       - name: Build
         run: npm run build -- --base="/${{ github.event.repository.name }}/"
 
@@ -46,6 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Vite default build output folder.
           path: ./dist
 
       - name: Deploy to Pages
