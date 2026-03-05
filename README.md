@@ -135,12 +135,17 @@ git push
 
 ## Daily Development Flow
 
-1. Start from updated `main`:
+Branching policy for this repo:
+- Keep only one working branch at a time.
+- Fixed branch name: `work`.
+- Open one PR from that branch to `main`, merge it, then delete the branch.
+
+1. Start from updated `main` and create your single working branch:
 
 ```bash
-git checkout main
+git switch main
 git pull --ff-only
-git checkout -b feat/<short-description>
+git switch -c work
 ```
 
 2. Develop and validate locally:
@@ -155,7 +160,7 @@ npm run build
 ```bash
 git add .
 git commit -m "feat(scope): short summary"
-git push -u origin feat/<short-description>
+git push -u origin work
 ```
 
 4. Open a Pull Request to `main`, wait for CI checks, get review, then squash-merge.
@@ -188,20 +193,20 @@ Examples:
 # list branches
 git branch -a
 
-# switch to an existing branch
-git switch <branch-name>
+# create and switch to your single working branch
+git switch -c work
 
-# create and switch to a new branch
-git switch -c feat/<short-description>
+# switch to your working branch
+git switch work
 
 # delete a local branch (safe, only if merged)
-git branch -d <branch-name>
+git branch -d work
 
 # force delete a local branch (if not merged)
-git branch -D <branch-name>
+git branch -D work
 
 # delete a remote branch
-git push origin --delete <branch-name>
+git push origin --delete work
 ```
 
 After your PR is merged, clean up with:
@@ -209,9 +214,8 @@ After your PR is merged, clean up with:
 ```bash
 git switch main
 git pull --ff-only
-git branch -d <previous-branch-name>
-# optional: delete remote too
-git push origin --delete <previous-branch-name>
+git branch -d work
+git push origin --delete work
 ```
 
 ## Quick Fix: "src refspec ... does not match any"
@@ -219,8 +223,8 @@ git push origin --delete <previous-branch-name>
 If you tried to push a branch name that does not exist locally:
 
 ```bash
-git switch -c feat/update-eslint-config
-git push -u origin feat/update-eslint-config
+git switch -c work
+git push -u origin work
 ```
 
 If you are already on `main` and want to push `main`:
