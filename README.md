@@ -182,6 +182,16 @@ git branch -D <branch-name>
 git push origin --delete <branch-name>
 ```
 
+After your PR is merged, clean up with:
+
+```bash
+git switch main
+git pull --ff-only
+git branch -d <previous-branch-name>
+# optional: delete remote too
+git push origin --delete <previous-branch-name>
+```
+
 ## Quick Fix: "src refspec ... does not match any"
 
 If you tried to push a branch name that does not exist locally:
