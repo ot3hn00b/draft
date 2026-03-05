@@ -6,6 +6,8 @@ Project bootstrap command:
 npm create vite@latest draft -- --template react-ts
 ```
 
+Note: Vite was used to scaffold the project, and it is still used now by current scripts (`npm run dev`, `npm run build`, `npm run preview`).
+
 ## Setup Steps and Commands Used
 
 ### Step 1: Initialize Git and first commit
