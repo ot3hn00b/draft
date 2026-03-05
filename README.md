@@ -207,6 +207,28 @@ If you are already on `main` and want to push `main`:
 git push origin main
 ```
 
+## Quick Fix: "push rejected (fetch first)"
+
+If remote moved ahead of your local branch:
+
+```bash
+git pull --rebase origin main
+git push origin main
+```
+
+If rebase reports conflicts:
+
+```bash
+git status
+# fix files, then:
+git add <file>
+git rebase --continue
+# repeat until done, then:
+git push origin main
+```
+
+If rebase does not stop, that means no conflicts. Just run the push command.
+
 ## How Changes Go From Local to GitHub Pages
 
 1. You make changes locally on a feature branch.
