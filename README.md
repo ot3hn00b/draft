@@ -235,6 +235,20 @@ If you are already on `main` and want to push `main`:
 git push origin main
 ```
 
+## Quick Fix: "current branch has no upstream branch"
+
+First push of branch `work`:
+
+```bash
+git push -u origin work
+```
+
+Optional (set upstream automatically for new branches):
+
+```bash
+git config --global push.autoSetupRemote true
+```
+
 ## Quick Fix: "push rejected (fetch first)"
 
 If remote moved ahead of your local branch:
