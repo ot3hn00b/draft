@@ -160,6 +160,28 @@ git push -u origin feat/<short-description>
 
 4. Open a Pull Request to `main`, wait for CI checks, get review, then squash-merge.
 
+## Commit Message Quick Guide
+
+Use this format:
+
+```bash
+git commit -m "<type>(optional-scope): short summary"
+```
+
+Common types:
+- `feat` new feature
+- `fix` bug fix
+- `docs` documentation only
+- `chore` maintenance or config updates
+- `ci` CI/CD workflow changes
+- `refactor` code cleanup without behavior change
+- `test` tests only
+
+Examples:
+- `chore(config): update eslint and prettier settings`
+- `ci(actions): update workflow node version`
+- `fix(score): prevent negative values`
+
 ## Common Branch Commands (Minimal)
 
 ```bash
