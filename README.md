@@ -146,6 +146,8 @@ Branching policy for this repo:
 
 ```bash
 git switch main
+# alternative command
+# git checkout main
 git pull --ff-only
 git switch -c work
 ```
@@ -220,12 +222,13 @@ git branch -d work
 git push origin --delete work
 ```
 
-## Quick Fix: "src refspec ... does not match any"
-
-If you tried to push a branch name that does not exist locally:
+## Quick Fix: branch push errors (`refspec` / `no upstream`)
 
 ```bash
+# if branch `work` does not exist locally
 git switch -c work
+
+# first push of `work` (also fixes "no upstream branch")
 git push -u origin work
 ```
 
@@ -235,15 +238,7 @@ If you are already on `main` and want to push `main`:
 git push origin main
 ```
 
-## Quick Fix: "current branch has no upstream branch"
-
-First push of branch `work`:
-
-```bash
-git push -u origin work
-```
-
-Optional (set upstream automatically for new branches):
+Optional one-time setup:
 
 ```bash
 git config --global push.autoSetupRemote true
