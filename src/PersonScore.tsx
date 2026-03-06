@@ -1,14 +1,6 @@
-import { useEffect, useReducer, useRef, useMemo } from 'react';
+import { useEffect, useReducer, useRef, useCallback } from 'react';
 import { getPerson } from './getPerson';
-
-function sillyExpensiveFunction() {
-  console.log('Executing silly function');
-  let sum = 0;
-  for (let i = 0; i < 10000; i++) {
-    sum += i;
-  }
-  return sum;
-}
+import { Reset } from './Reset';
 
 type State = {
   name: string | undefined;
@@ -67,7 +59,8 @@ export function PersonScore() {
     }
   }, [loading]);
 
-  const expensiveCalculation = useMemo(() => sillyExpensiveFunction(), []);
+  const handleReset = () => dispatch({ type: 'reset' });
+  const handleResetMemoized = useCallback(handleReset, []);
 
   if (loading) {
     return <div>Loading ...</div>;
@@ -78,12 +71,11 @@ export function PersonScore() {
       <h3>
         {name}, {score}
       </h3>
-      <p>{expensiveCalculation}</p>
       <button ref={addButtonRef} onClick={() => dispatch({ type: 'increment' })}>
         Add
       </button>
       <button onClick={() => dispatch({ type: 'decrement' })}>Subtract</button>
-      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+      <Reset onClick={handleResetMemoized} />
     </div>
   );
 }
